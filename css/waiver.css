@@ -1,0 +1,165 @@
+/* ---------- Problem 1: Mobile First ---------- */
+.container {
+  display: grid;
+  width: 70%;
+  max-width: 375px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+.container figure {
+  width: 100%;
+}
+
+.container figure img {
+  width: 100%;
+}
+
+.container figure {
+  box-sizing: border-box;
+}
+
+figcaption {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+
+/* ---------- Problem 2: 650px and up ---------- */
+@media screen and (min-width: 650px) {
+  .jump {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  .jump:focus {
+    clip: auto;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid black;
+  }
+
+  .container {
+    width: 95%;
+    max-width: none;
+    margin: 0 auto;
+    display: grid;
+    background-image: url('../images/concrete_seamless.png');
+    background-size: cover;
+    grid-template-columns: 25% 25% 25%;
+    justify-content: space-around;
+    gap: 20px; 
+  }
+
+  .container > * {
+    grid-column: span 2;
+  }
+
+  .container > :nth-child(odd) {
+    grid-column: 1 / span 2;
+  }
+
+  .container > :nth-child(even) {
+    grid-column: 2 / span 2;
+  }
+}
+
+
+/* ---------- Problem 3: 750px and up ---------- */
+@media screen and (min-width: 750px) {
+  .container {
+    grid-template-columns: 20% 20% 20% 20%;
+    justify-content: space-between;
+  }
+
+  .container figure {
+    grid-column: span 2;
+  }
+
+  .container figure:last-child {
+    grid-column-start: 2;
+  }
+}
+
+
+/* ---------- Problem 4: 900px and up ---------- */
+@media screen and (min-width: 900px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .container figure {
+    width: 20%;
+    box-sizing: border-box;
+    transform: none;
+  }
+
+  .container figure:nth-of-type(4n) {
+    width: 40%;
+    border: 10px solid black;
+  }
+
+  .container figure:nth-of-type(2) {
+    order: 99;
+  }
+}
+
+
+/* ---------- Problem 5: 1050px and up ---------- */
+@media screen and (min-width: 1050px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .container figure {
+    width: 75%;
+    margin-bottom: 20px;
+    grid-column: span 1;
+    transform: none;
+  }
+
+  .container figure:nth-of-type(2) {
+    order: 0;
+  }
+
+  .container figure:last-child {
+    grid-column: span 2;
+  }
+
+  .container figure:nth-of-type(odd):not(:last-child) {
+    transform: rotate(15deg);
+  }
+
+  .container figure:nth-of-type(even):not(:last-child) {
+    transform: rotate(-15deg);
+  }
+}
+
+
+/* ---------- Problem 6: Animation and Reduced Motion ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.logo {
+  animation: fadeIn 10s ease-in-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+  }
+}
